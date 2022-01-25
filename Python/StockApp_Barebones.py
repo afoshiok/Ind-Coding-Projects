@@ -42,8 +42,10 @@ try:
          #print(stock_info_nd)
         if 'no' in q1:
             print('Ok bye!')
-    else:
-        print('stock_info') #This prints the info for yesterday.
+    else: #This prints the info for yesterday.
+        print('Opening Price: ${}'.format(stock_info['open']))
+        print('Closing Price: ${}'.format(stock_info['close'])) 
+        print('\nSee you tomorrow!')
 except TypeError:
     print("Stock doesn't exist")
 
@@ -51,7 +53,7 @@ except TypeError:
 #print(r3.status_code)
 yy = yesterday.strftime("%A")
 print(yy)
-print(stock_info)
+#print(stock_info)
 
 
 
