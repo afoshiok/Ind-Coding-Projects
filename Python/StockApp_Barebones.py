@@ -22,8 +22,9 @@ try:
     print('{}({})'.format(stock['results'][0]['name'],stock['results'][0]['ticker']))
     print('--------------------------------------------------------------------------------------------------')
     print('Information for {}:'.format(date_full))
+    weekends = ['Saturday', 'Sunday']
 
-    if yesterday.strftime("%A") == "Saturday" or "Sunday":
+    if yesterday.strftime("%A") in weekends:
         print("The markets are not open on the weekends :(\n")
         q1 = input("Do you want to enter an another date?").lower() #Always results in lowercase variable 
         while 'yes' in q1:
@@ -47,14 +48,12 @@ except TypeError:
     print("Stock doesn't exist")
 
 
-print(r3.status_code)
+#print(r3.status_code)
+yy = yesterday.strftime("%A")
+print(yy)
+print(stock_info)
 
 
 
-#dd = input('Date(YYYY-MM-DD)')
-#new_date = datetime.datetime.strptime(dd, '%Y-%m-%d')
-#print(new_date)
 
 
-
-#print(yesterday)
