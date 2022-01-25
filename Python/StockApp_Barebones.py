@@ -28,7 +28,7 @@ try:
         print("The markets are not open on the weekends :(\n")
         q1 = input("Do you want to enter an another date?").lower() #Always results in lowercase variable 
         while 'yes' in q1:
-         dd = input('Enter new date(YYYY-MM-DD):') #FIXME: Crashes when if is also a Saturday or Sunday
+         dd = input('Enter new date(YYYY-MM-DD):') 
          new_date = datetime.datetime.strptime(dd, '%Y-%m-%d')
          new_date_f = new_date.strftime("%Y-%m-%d")
          new_date_full = new_date.strftime("%B %d,%Y")
