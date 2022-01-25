@@ -53,7 +53,7 @@ except TypeError:
 #print(r3.status_code)
 yy = yesterday.strftime("%A")
 print(yy)
-#print(stock_info)
+
 
 
 
