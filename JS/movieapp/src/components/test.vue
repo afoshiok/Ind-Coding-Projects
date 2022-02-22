@@ -1,3 +1,16 @@
+<script>
+export default {
+    name: 'test',
+    props: []
+}
+getdata()//API console.log works now but it logs on load instead of on the click.
+async function getdata(){
+    const response = await fetch('https://ghibliapi.herokuapp.com/films')
+    const data = await response.json()
+    console.log(data)
+    } 
+</script>
+
 <template>
     <h1>MAIN VIEW TEST</h1>
     <section>
@@ -5,19 +18,7 @@
         placeholder="Insert Movie Name"
         :value="movie"/>
         <button
-        v-on:click= getdata()>Submit</button>
+        @click= "getdata()">Submit</button>
     </section>
 </template>
 
-<script>
-export default {
-    name: 'test',
-    props: []
-}
-getdata()
-async function getdata(){
-    const response = await fetch('https://ghibliapi.herokuapp.com/films')
-    const data = await response.json()
-    } //Trying to test use of APIs with the Ghibli API but it isn't working...
-
-</script>
