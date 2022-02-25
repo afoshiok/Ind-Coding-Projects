@@ -1,10 +1,29 @@
+<template>
+    <h1>MAIN VIEW TEST</h1>
+    <section id = "#Runner">
+        <input type="text" 
+        placeholder="Insert Movie Name"/>
+        <button
+        @click= "getmovie">Submit</button>
+        <p>{{name}}</p>
+    </section>
+</template>
+
 <script>
 export default {
     name: 'test',
-    props: []
+    props: [],
+    data(){
+        return{
+            name: "title"
+        }
+    },
+    methods : {
+        getmovie : getmovie()
+    },
 }
-getdata()//API console.log works now but it logs on load instead of on the click.
-async function getdata(){
+getmovie()//I think I got this to work but the library im in is blocking the API call.
+async function getmovie(){
     const response = await fetch('https://ghibliapi.herokuapp.com/films')
     const data = await response.json()
     const obj = JSON.parse(this.data)
@@ -14,14 +33,3 @@ async function getdata(){
     console.log(data)
     } 
 </script>
-
-<template>
-    <h1>MAIN VIEW TEST</h1>
-    <section>
-        <input type="text" 
-        placeholder="Insert Movie Name"/>
-        <button
-        @click= "getdata()">Submit</button>
-    </section>
-</template>
-
