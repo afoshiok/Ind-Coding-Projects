@@ -15,7 +15,7 @@ export default {
     props: [],
     data(){
         return{
-            name: "title"
+            name: "movie"
         }
     },
     methods : {
