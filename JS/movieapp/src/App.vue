@@ -27,4 +27,11 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
 }
+#Input1{
+  margin-right: .5in;
+  margin-left: .5in;
+}
+#Input2{
+  margin-right: .25in;
+}
 </style>

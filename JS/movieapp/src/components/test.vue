@@ -1,8 +1,11 @@
 <template>
     <h1>MAIN VIEW TEST</h1>
     <section id = "#Runner">
-        <input type="text" 
+        <input id="Input1"
+        type="text" 
         placeholder="Insert Movie Name"/>
+        <input id="Input2" type="text"
+        placeholder="Enter something"/>
         <button
         @click= "getmovie">Submit</button>
         <p>{{name}}</p>
