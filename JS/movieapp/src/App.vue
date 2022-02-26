@@ -35,7 +35,7 @@ export default {
   margin-right: .25in;
 }
 #movie{
-  padding-bottom: 50px;
-  padding-top: 25px;
+  padding-bottom: 15px;
+  padding-top: 30px;
 }
 </style>
