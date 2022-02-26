@@ -34,4 +34,8 @@ export default {
 #Input2{
   margin-right: .25in;
 }
+#movie{
+  padding-bottom: 50px;
+  padding-top: 25px;
+}
 </style>

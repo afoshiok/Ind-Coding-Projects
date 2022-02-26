@@ -8,18 +8,20 @@
         placeholder="Enter something"/>
         <button
         v-on:click= "getmovie()">Submit</button>
-        <div id="card">
-        </div>
+        <div id="movie">{{name}}</div>
+        <img v-bind:src="picture" :alt="poster">
     </section>
 </template>
 
 <script>
+
 export default {
     name: 'test',
     props: [],
     data(){
         return{
-            name: 'none'
+            name: '', //title's unchanged state
+            picture:'' //Poster's unchanged state
         }
     },
     methods : {
@@ -27,14 +29,10 @@ export default {
             const response = await fetch('https://ghibliapi.herokuapp.com/films')
             const results = await response.json()
             console.log(results)
-            
+            this.name = results[0].title //changes title
+            this.picture = results[0].image //changes name
             results.forEach(movie => {
                 console.log(movie.title)
-                const card = document.createElement('div')
-                card.setAttribute('id','card')
-                const h1 = document.createElement('h1')
-                h1.textContent = movie.title
-                card.appendChild(h1)
             })
         }
     },
