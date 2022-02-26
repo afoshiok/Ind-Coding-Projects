@@ -7,8 +7,9 @@
         <input id="Input2" type="text"
         placeholder="Enter something"/>
         <button
-        @click= "getmovie">Submit</button>
-        <p>{{name}}</p>
+        v-on:click= "getmovie()">Submit</button>
+        <div id="card">
+        </div>
     </section>
 </template>
 
@@ -18,21 +19,25 @@ export default {
     props: [],
     data(){
         return{
-            name: "movie"
+            name: 'none'
         }
     },
     methods : {
-        getmovie : getmovie()
+        async getmovie(){
+            const response = await fetch('https://ghibliapi.herokuapp.com/films')
+            const results = await response.json()
+            console.log(results)
+            
+            results.forEach(movie => {
+                console.log(movie.title)
+                const card = document.createElement('div')
+                card.setAttribute('id','card')
+                const h1 = document.createElement('h1')
+                h1.textContent = movie.title
+                card.appendChild(h1)
+            })
+        }
     },
 }
-getmovie()//I think I got this to work but the library im in is blocking the API call.
-async function getmovie(){
-    const response = await fetch('https://ghibliapi.herokuapp.com/films')
-    const data = await response.json()
-    const obj = JSON.parse(this.data)
-    obj.forEach(movie=> {
-        console.log(movie.title)
-    });
-    console.log(data)
-    } 
+
 </script>
