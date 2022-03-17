@@ -15,8 +15,6 @@
 </template>
 
 <script>
-require('dotenv').config()
-console.log(process.env)
 
 export default {
     name: 'test',
@@ -30,24 +28,15 @@ export default {
     },
     methods : {
         async getmovie(){
-            const response = await fetch('https://ghibliapi.herokuapp.com/films')
-            const results = await response.json()
-            console.log(results)
-            var pos = Math.floor(Math.random()*results.length) //Gets random array position
-            this.name = results[pos].title //changes title
-            this.picture = results[pos].image //changes name
-            this.org_title = results[pos].original_title
-            results.forEach(movie => {
-                console.log(movie.title)
-            })
-        },
-        async getdistance(){
-            var from_value = from_value
-            document.getElementById('Orig').value = from_value
-            var to_value = to_value
-            document.getElementById('Dest').value = to_value
-            //const dist_response = await fetch(`https://api.distancematrix.ai/maps/api/distancematrix/json?origins=${from_value}&destinations=${to_value}=<your_access_token>`) //Distance Matrix API Set to expire on 3/18/21 currently looking for a new one
-        } //This function gets the distance between 2 points.
+            require('dotenv').config();
+            console.log(process.env)
+            const film_api_key = process.env.film_api
+            console.log(film_api_key)
+            const response = await fetch(`https://api.themoviedb.org/3/trending/movie/week?api_key=${film_api_key}`)
+            const data = await response.json()
+            console.log(data)
+            
+        }
     },
 }
 
