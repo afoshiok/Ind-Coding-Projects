@@ -15,6 +15,8 @@
 </template>
 
 <script>
+require('dotenv').config()
+console.log(process.env)
 
 export default {
     name: 'test',
@@ -44,7 +46,7 @@ export default {
             document.getElementById('Orig').value = from_value
             var to_value = to_value
             document.getElementById('Dest').value = to_value
-            const dist_response = await fetch(`https://api.distancematrix.ai/maps/api/distancematrix/json?origins=${from_value}&destinations=${to_value}=<your_access_token>`) //Distance Matrix API Set to expire on 3/18/21 currently looking for a new one
+            //const dist_response = await fetch(`https://api.distancematrix.ai/maps/api/distancematrix/json?origins=${from_value}&destinations=${to_value}=<your_access_token>`) //Distance Matrix API Set to expire on 3/18/21 currently looking for a new one
         } //This function gets the distance between 2 points.
     },
 }
