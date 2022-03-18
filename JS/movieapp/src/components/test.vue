@@ -13,9 +13,8 @@
         <img v-bind:src="picture" :alt="picture">
     </section>
 </template>
-
 <script>
-require('dotenv').config({path:'/JS/movieapp/.env'});
+
 export default {
     name: 'test',
     props: [],
@@ -28,9 +27,9 @@ export default {
     },
     methods : {
         async getmovie(){
-            console.log(process.env)
-            const film_api_key = process.env.FILM_API
-            console.log(film_api_key)
+            require('dotenv').config({path: './JS/movieapp/.env'})
+            const film_api_key = process.env.FILM_KEY      
+            console.log("Film api key is", process.env.FILM_KEY)
             const response = await fetch(`https://api.themoviedb.org/3/trending/movie/week?api_key=${film_api_key}`)
             const data = await response.json()
             console.log(data)
