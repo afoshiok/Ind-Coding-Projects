@@ -1,0 +1,15 @@
+import time
+shrek_trans = open('Shrek.txt','r') #Opens Shrek script
+script = shrek_trans.readlines() #Reads each line in .txt fie
+script_list = [] #Houses script lines
+for line in script:
+    script_list.append(line) #Adds lines to script_list BUT it includes '\n'
+script_revised = []
+for line in script_list: #Removes '\n' 
+    if line != '\n':
+        script_revised.append(line)
+    else:
+        pass
+print(script_revised)
+
+#Next I will create a way to iterate over the script_revised list and tweet a line each day.
