@@ -1,16 +1,31 @@
 require('dotenv').config({path: '.env'}); //Imports dotenv
-const fetch = require('node-fetch');
+
 
 const AERO_KEY = process.env.AERO_API_KEY //API key for flight api provided by AeroDataBox
 
 const flight_from = 'IAH' //Will be replaced later with inputs from html form request
 const flight_to = 'LAX' // Same as line #5 
 
+const options = {  //Headers for API request 
+	method: 'GET',
+	headers: {
+		'X-RapidAPI-Host': 'aerodatabox.p.rapidapi.com',
+		'X-RapidAPI-Key': AERO_KEY
+	}
+};
 
-const res = fetch(`https://aerodatabox.p.rapidapi.com/airports/iata/${flight_from}/distance-time/${flight_to}`)
-const json = res.json
+fetch(`https://aerodatabox.p.rapidapi.com/airports/iata/${flight_from}/distance-time/${flight_to}`, options)
+.then(response => response.json())
+.then(data =>{
+    var flighttime = data.approxFlightTime
+    var flighttime_hr_min = flighttime.slice(0,2) * 60 //Slices duration  string to only show hours and multiplies it by 60. Resulting in hours in minutes
+    var flighttime_mins = Number(flighttime.slice(3,5)) //Slices duration string to only show minutes. Number(...) converts it to interger
+    const filght_tot = flighttime_hr_min + flighttime_mins //WILL BE THE FILTER FOR TMDb QUERY
+    console.log(filght_tot)
+})
 
 
-console.log(json)
 
-console.log(AERO_KEY)
+
+
+// console.log(AERO_KEY)
