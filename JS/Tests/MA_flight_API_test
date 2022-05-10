@@ -1,0 +1,16 @@
+require('dotenv').config({path: '.env'}); //Imports dotenv
+const fetch = require('node-fetch');
+
+const AERO_KEY = process.env.AERO_API_KEY //API key for flight api provided by AeroDataBox
+
+const flight_from = 'IAH' //Will be replaced later with inputs from html form request
+const flight_to = 'LAX' // Same as line #5 
+
+
+const res = fetch(`https://aerodatabox.p.rapidapi.com/airports/iata/${flight_from}/distance-time/${flight_to}`)
+const json = res.json
+
+
+console.log(json)
+
+console.log(AERO_KEY)
