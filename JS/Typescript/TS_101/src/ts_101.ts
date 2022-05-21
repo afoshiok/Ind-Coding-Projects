@@ -67,6 +67,74 @@ function log(message: string | number): void{  //Void means you won't return any
     console.log(message)
 }
 
+//Interfaces 
+interface UserInterface {
+    readonly id: number, //readonly is pretty self explanitory, but that fuction can only be read.
+    name: string,
+    age ?: number  //"?:" means the property is optional. You won't get an error if you object doesn't include it.
+}
+
+const user1: UserInterface = {
+    id: 1,
+    name: 'Bob'
+}
+
+interface MathFunc {
+    (x: number, y: number): number
+}
+const add: MathFunc = (x:number, y:number): number => x + y
+const sub: MathFunc = (x:number, y:number): number => x - y
+//Interface vs Type
+type Point = number | string // Type works with Primitives and Unions
+const p1: Point = 1
+
+interface PersonInterface {
+    id: number, //readonly is pretty self explanitory, but that fuction can only be read.
+    name: string,
+    register(): string
+}
+
+//Classes
+class Person implements PersonInterface {
+    private id: number //"Private" means that property can only be called within that class (See line 115 for error). You can also use "Protected" and "Public".
+    name: string
+
+    constructor(id: number, name: string){
+        this.id = id
+        this.name = name
+    }
+
+    register(){
+        return `${this.name} is now registered`
+    }
+}
+
+const brad = new Person(1, 'Brad Pitt')
+const norm = new Person(2, 'Norm Fedder')
+
+norm.id = 5
+
+
+class Employee extends Person{
+    position: string
+
+    constructor(id: number, name: string, position: string){
+        super(id,name)
+        this.position = position
+    }
+}
+
+const emp = new Employee(3, 'Shawn', 'Developer')
+
+//Generics
+function getArray<T>(items: T[]): T[]{  //T is a placeholder for the types.
+    return new Array().concat(items)
+}
+let numArray = getArray<number>([1,2,3,4])
+let strArray = getArray<string>(['Tom','Bill','Jack'])
+
+numArray.push('Hello')
+
 
 //use "tsc [name of ts file]" in the command line to compile the ts file to a js file. (Or just "tsc")
 //use "tsc --watch [name of ts file]" to compile in watch mode, which doesn't create a js file.
