@@ -1,9 +1,23 @@
-const App = () => {
+import PropTypes from 'prop-types'
+
+const Header = ({ title }) => {
   return (
-    <div className='container'>
-        <h1>Hello From React</h1>
-    </div>
+    <header>
+      <h1>{ title }</h1>
+    </header>
   )
 }
 
-export default App
+Header.defaultProps = {
+  title: 'Task Tracker'
+}
+
+Header.propTypes = {
+  title: PropTypes.string, //you can only pass strings into the title prop
+}
+
+//CSS in JS
+// const headingStyle = {
+//   color: 'red'
+// }
+export default Header
