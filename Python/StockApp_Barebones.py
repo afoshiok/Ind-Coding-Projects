@@ -10,9 +10,9 @@ try:
     date_f = yesterday.strftime("%Y-%m-%d")
     date_full = yesterday.strftime("%B %d,%Y")
 
-    url = 'https://api.polygon.io/v3/reference/tickers?ticker={}&active=true&sort=ticker&order=asc&limit=10&apiKey=VapxuwrlubAE4GRJTDkDOiIPjiVdlVE1'.format(ticker)
+    url = 'https://api.polygon.io/v3/reference/tickers?ticker={}&active=true&sort=ticker&order=asc&limit=10&apiKey='.format(ticker)
     r = requests.get(url)
-    url2 = 'https://api.polygon.io/v1/open-close/{}/{}?adjusted=true&apiKey=VapxuwrlubAE4GRJTDkDOiIPjiVdlVE1'.format(ticker,date_f)
+    url2 = 'https://api.polygon.io/v1/open-close/{}/{}?adjusted=true&apiKey='.format(ticker,date_f)
     r2 = requests.get(url2)
 
 
@@ -32,7 +32,7 @@ try:
          new_date = datetime.datetime.strptime(dd, '%Y-%m-%d')
          new_date_f = new_date.strftime("%Y-%m-%d")
          new_date_full = new_date.strftime("%B %d,%Y")
-         url3 = 'https://api.polygon.io/v1/open-close/{}/{}?adjusted=true&apiKey=VapxuwrlubAE4GRJTDkDOiIPjiVdlVE1'.format(ticker,new_date_f)
+         url3 = 'https://api.polygon.io/v1/open-close/{}/{}?adjusted=true&apiKey='.format(ticker,new_date_f)
          r3 = requests.get(url3)
          stock_info_nd = r3.json()
          print('Information for {}:'.format(new_date_full))
